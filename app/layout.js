@@ -1,6 +1,6 @@
 import './globals.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/home/parts/Header';
+import Footer from './components/home/parts/Footer';
 import Head from 'next/head';
 import Script from 'next/script';
 import ClientThemeProvider from './components/ClientThemeProvider';

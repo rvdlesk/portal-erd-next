@@ -1,32 +1,37 @@
-'use client';
-
+'use client'
+import React, { useEffect } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+    toggleLangDropdown,
+    preventMenuGridDropdownClose,
+    toggleHamburgerMenu,
+    toggleSubMenu,
+    closeMenuGrid,
+    handleResize,
+  } from "@/public/js/main"; 
 
-export default function Header() {
-  return (
-    <>
-      <official-header></official-header>
-      <header className="header-light">
-        <div className="topbar">
-          <div className="container">
-            <div className="topbar-cont">
-              <Link href="/" className="logo">
-                <div className="logo-icon">
-                  <Image src="/img/page-logo.svg" alt="Logo" width={300} height={300} />
-                </div>
-              </Link>
-              <div className="topbar-right">
-                <form className="search-bar">
-                  <label className="search-bar-toggle" htmlFor="searchMain">
-                    <i className="ri-search-line"></i>
-                  </label>
-                  <input id="searchMain" type="search" placeholder="¿Qué quieres buscar?" />
-                  <button type="submit">
-                    <i className="ri-search-line"></i><span>Buscar</span>
-                  </button>
-                </form>
-                <div className="menu-grid dropdown">
+const Portals = () => {
+    useEffect(() => {
+        // Inicializa todas las funciones cuando el componente se monta
+        toggleLangDropdown();
+        preventMenuGridDropdownClose();
+        toggleHamburgerMenu();
+        toggleSubMenu();
+        closeMenuGrid();
+    
+        // Añadir listener para manejar el resize
+        window.onresize = handleResize;
+        handleResize(); // Llamar la función una vez al cargar el componente
+    
+        return () => {
+          // Limpia los event listeners al desmontar el componente
+          window.onresize = null;
+        };
+      }, []);
+    return ( 
+        <>
+        <div className="menu-grid dropdown">
                   <a className="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <Image src="/img/grid-menu-icon.svg" alt="Menu" width={30} height={30} />
                   </a>
@@ -168,8 +173,7 @@ export default function Header() {
                     </div>
                   </ul>
                 </div>
-                {/* Lenguaje y menú hamburguesa */}
-                <div className="lang-select dropdown-simple">
+                {/* <div className="lang-select dropdown-simple"> 
                   <a href="#">
                     <Image src="https://flagcdn.com/do.svg" alt="Idioma" width={20} height={20} />
                     <i className="ri-arrow-down-s-line"></i>
@@ -182,41 +186,14 @@ export default function Header() {
                       <Image src="https://flagcdn.com/us.svg" alt="EN" width={20} height={20} /><span>EN</span>
                     </a>
                   </div>
-                </div>
+                </div>*/}
                 <div className="hamburger-menu">
                   <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <Image src="/img/menu hamburguesa.svg" alt="Menu" width={30} height={30} />
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="main-menu">
-            <div className="container">
-                <div className="main-menu-cont">
-                    <div className="menu">
-                        <a href="#" className="menu-item">Inicio</a>
-                        <div className="dropdown menu-dropdown">
-                            <a className="dropdown-toggle menu-item d-flex" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Sobre nosotros <i className="ri-arrow-down-s-line"></i>
-                            </a>
-                            <div className="dropdown-menu">
-                              <a className="dropdown-item" href="#">Misión</a>
-                              <a className="dropdown-item" href="#">Visión</a>
-                              <a className="dropdown-item" href="#">Políticas de Privacidad</a>
-                            </div>
-                        </div>
-                        <a href="#" className="menu-item">Depacho del ministro</a>
-                        <a href="#" className="menu-item">Servicios</a>
-                        <a href="#" className="menu-item">Marco Legal</a>
-                        <a href="transparencia.html" className="menu-item">Transparencia</a>
-                        <a href="#" className="menu-item">Noticias</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </header>
-    </>
-  );
+                </>
+     );
 }
+ 
+export default Portals;
