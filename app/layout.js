@@ -1,6 +1,6 @@
 import './globals.css';
 import Header from './components/home/parts/Header';
-import Footer from './components/home/parts/Footer';
+import Footer from './components/home/parts/footer/Footer';
 import Head from 'next/head';
 import Script from 'next/script';
 import ClientThemeProvider from './components/ClientThemeProvider';
@@ -8,7 +8,7 @@ export const metadata = {
   title: 'SDD Index',
   description: 'Página principal de SDD',
 };
-
+import ScrollToTop from './components/home/scroll-top/ScrollToTop';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -38,9 +38,16 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
           strategy="beforeInteractive"
         />
-        <Script src="/js/main.js" strategy="beforeInteractive" />
+         <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `(function(d){var s = d.createElement('script');s.setAttribute('data-account', 'GMHeeIiu3r');s.src = 'https://cdn.userway.org/widget.js';(d.head || d.body).appendChild(s);})(document)`,
+          }}
+        />
+        {/* <Script src="/js/main.js" strategy="beforeInteractive" /> */}
        
       </body>
+      <ScrollToTop />
       </ClientThemeProvider>
     </html>
   );

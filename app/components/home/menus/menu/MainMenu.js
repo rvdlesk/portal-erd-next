@@ -6,7 +6,7 @@ const MainMenu = () => {
             <div className="container">
                 <div className="main-menu-cont">
                     <div className="menu">
-                        <a href="#" className="menu-item">Inicio</a>
+                        <a href="/" className="menu-item">Inicio</a>
                         <div className="dropdown menu-dropdown">
                             <a className="dropdown-toggle menu-item d-flex" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Sobre nosotros <i className="ri-arrow-down-s-line"></i>
@@ -18,7 +18,7 @@ const MainMenu = () => {
                             </div>
                         </div>
                         <a href="#" className="menu-item">Servicios</a>
-                        <a href="#!" className="menu-item">Transparencia</a>
+                        <a href="/transparencia" className="menu-item">Transparencia</a>
                         <a href="#" className="menu-item">Noticias</a>
                         <a href="#" className="menu-item">Multimedia</a>
                         <div className="dropdown menu-dropdown">

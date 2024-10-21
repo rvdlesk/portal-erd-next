@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "@ogticrd/ui-kit": "^0.10.0",
+    "animate.css": "^4.1.1",
     "embedrax": "^1.2.0",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-loading-skeleton": "^3.5.0",
     "react-player": "^2.16.0",
-    "swiper": "^11.1.14"
+    "react-spinners": "^0.14.1",
+    "swiper": "^11.1.14",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^8",

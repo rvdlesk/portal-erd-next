@@ -1,0 +1,8 @@
+.active {
+    color:#1e8338 !important;
+
+}
+
+.list-submenu .group-submenu ul li a[data-bs-toggle|="collapse"], .list-submenu .group-submenu ul li a {
+    line-height: 1.2rem !important;
+}

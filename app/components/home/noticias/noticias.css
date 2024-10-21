@@ -1,0 +1,16 @@
+@keyframes zoomEffect {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.05); /* Zoom más ligero */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .zoom-image {
+    animation: zoomEffect 10s infinite ease-in-out; /* Animación más lenta */
+  }
+  

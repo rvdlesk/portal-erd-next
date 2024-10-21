@@ -327,8 +327,12 @@ p.subtitle{
 }
 
 .main-menu .dropdown-menu{
-    padding: 0;
+    padding: 10px;
+    margin-top: 15px !important;
 }
+
+
+  
 .dropdown-list a+a {
     margin-top: 0;
 }
@@ -392,6 +396,11 @@ p.subtitle{
         transform: none !important;
         border:none;
         padding:0;
+
+        opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .main-menu .menu-dropdown .dropdown-menu{
@@ -713,7 +722,7 @@ p.subtitle{
   
   .logotipo {
     /* width: 100%; */
-    height: 75px;
+    height: 70px;
     /* margin-right: 7px;  */
     
   }
@@ -734,58 +743,11 @@ p.subtitle{
 
   }
 
-  /* .search-bar input::placeholder{
+  .search-bar input::placeholder{
     font-size: 14px;
-  } */
+  }
 
 
-	.stamp-container {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		right: 0;
-		width: auto;
-	}
-
-	.stamp-box {
-		width: 100px;
-		height: 100px;
-		position: relative;
-		/* margin: 0.5rem; */
-		cursor: pointer;
-	}
-
-	.stamp {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-	}
-
-	.stack-top {
-		z-index: 9;
-	}
-
-
-
-	.stamp-mobile {
-		display: none;
-	}
-
-	@media only screen and (max-width : 767px) {
-		.stamp-container {
-			/* display: none; */
-		}
-
-		.stamp-mobile {
-			text-align: center !important;
-			display: block !important;
-
-		}
-
-		.logo-footer {
-			display: none !important;
-		}
-	}
 
 	.link-none {
 		color: #FFFFFF;
@@ -842,4 +804,57 @@ p.subtitle{
   .zoom-image.active {
     transform: scale(1.1); /* Efecto de zoom */
   }
+
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+.main-menu-cont .menu-item.active, .main-menu-cont .menu-item:hover, a:hover{
+    color:#1e8338 !important;
+}
   
+
+
+.custom-section {
+    /* margin: 40px 0; */
+  }
+  
+  .custom-left-box, .custom-right-box {
+    /* padding: 40px; */
+    color: white;
+    height: 329px;
+  }
+  
+  .custom-left-box {
+    background-color: #0B2611; /* Color azul */
+    padding:  0 5rem 0 30rem;
+  }
+  .custom-left-box h6, .custom-right-box h6 {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+  }
+  .custom-left-box h2, .custom-right-box h2 {
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: 400 !important;
+  }
+  .custom-left-box strong, .custom-right-box strong {
+    font-weight: bold !important;
+  }
+  
+  
+  .custom-right-box {
+    background-color: #564226; /* Color rojo */
+    padding:  0 30rem 0 5rem;
+  }
+
+ .custom-section button {
+    margin-top: 1rem;
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+  }
+  
+

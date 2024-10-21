@@ -1,0 +1,69 @@
+.stamp-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* right: 0; */
+    width: auto;
+}
+
+.stamp-box {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.stamp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.stack-top {
+    z-index: 9;
+}
+
+.stamp-box a {
+
+    z-index: 10; /* Asegura que el enlace esté sobre el iframe */
+    display: block; /* Asegura que el enlace ocupe todo el espacio */
+    width: 100%;
+    height: 100%;
+}
+
+.stamp-box iframe {
+    pointer-events: none; /* Evita que el iframe bloquee la interacción */
+}
+
+.tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 20;
+  }
+
+.stamp-mobile {
+    display: none;
+}
+
+@media only screen and (max-width : 767px) {
+    .stamp-container {
+        /* flex-direction: column; */
+    }
+
+    .stamp-mobile {
+        text-align: center !important;
+        display: block !important;
+    }
+
+    .logo-footer {
+        display: none !important;
+    }
+}
