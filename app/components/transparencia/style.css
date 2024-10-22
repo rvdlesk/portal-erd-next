@@ -1,0 +1,108 @@
+.folder-view {
+    padding: 20px;
+  }
+  
+  .subfolders ul, .files ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .breadcrumbs ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .breadcrumbs a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .btn-download, .btn-preview {
+    margin-left: 10px;
+    color: white;
+    background-color: red;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+
+  /* Estilo del div con sombra y transición */
+.folder-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease-in-out
+
+
+}
+
+/* Estilo del icono i */
+.folder-item i {
+  margin-right: 10px;
+  color: #ccc; /* Color predeterminado del icono */
+}
+
+/* Efecto hover */
+.folder-item:hover {
+  background-color: #1e8338; 
+  border-color: #1e8338;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2); 
+}
+.folder-item > span {
+  /* margin-left: 5px; */
+  color: #cccccc;
+}
+
+.folder-item:hover i,.folder-item:hover  span {
+  color: #FFFFFF; /* El icono se pone de color blanco */
+}
+
+
+
+
+.file-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.file-item h3 {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.file-item p {
+  margin: 0;
+  color: #777;
+}
+
+.file-item .btn-download {
+  background-color: #d9534f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.file-item .btn-preview {
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.file-item .btn-download:hover,
+.file-item .btn-preview:hover {
+  opacity: 0.9;
+}
