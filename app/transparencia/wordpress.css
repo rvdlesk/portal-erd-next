@@ -1,0 +1,88 @@
+/* Estilo para párrafos dentro de .wordpress-content */
+.wordpress-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 1em 0;
+    color: #333;
+}
+
+/* Estilos para encabezados dentro de .wordpress-content */
+.wordpress-content h1 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+    color: #2c3e50;
+}
+
+.wordpress-content h2 {
+    font-size: 2em;
+    margin: 0.5em 0;
+    color: #34495e;
+}
+
+.wordpress-content h3 {
+    font-size: 1.75em;
+    margin: 0.5em 0;
+    color: #7f8c8d;
+}
+
+.wordpress-content h4 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+    color: #95a5a6;
+}
+
+.wordpress-content h5 {
+    font-size: 1.25em;
+    margin: 0.5em 0;
+    color: #bdc3c7;
+}
+
+.wordpress-content h6 {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: #ecf0f1;
+}
+
+/* Estilo para texto en negrita dentro de .wordpress-content */
+.wordpress-content strong {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Estilos para listas dentro de .wordpress-content */
+.wordpress-content ul, 
+.wordpress-content ol {
+    margin: 1em 0;
+    padding-left: 20px;
+}
+
+.wordpress-content li {
+    margin: 0.5em 0;
+    line-height: 1.5;
+}
+
+/* Estilo para enlaces dentro de .wordpress-content */
+.wordpress-content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.wordpress-content a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para bloques de citas dentro de .wordpress-content */
+.wordpress-content blockquote {
+    margin: 1em 0;
+    padding: 10px 20px;
+    border-left: 5px solid #ccc;
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+/* Estilo para imágenes dentro de .wordpress-content */
+.wordpress-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1em 0;
+}

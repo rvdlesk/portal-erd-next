@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import LoadingContent from '@/app/components/Loading';
 import FolderList from '@/app/components/transparencia/FolderList'; 
 import { Button, Typography } from "@ogticrd/ui-kit";
+import { getOriginalTitle } from '@/app/utils/menuUtils'; 
 export default function ChildPage() {
   const { parent, child } = useParams(); 
   const [content, setContent] = useState(null);
@@ -17,7 +18,7 @@ export default function ChildPage() {
   // Función para buscar el contenido en la API de WordPress
   const fetchContent = async (folderId = null) => {
     setLoading(true);
-    let searchQuery = child ? encodeURIComponent(child) : encodeURIComponent(parent);
+    let searchQuery = child ? getOriginalTitle(child) : getOriginalTitle(parent);
     console.log('Fetching data with query:', searchQuery);
 
     try {
@@ -49,6 +50,7 @@ export default function ChildPage() {
       console.error('Error fetching content:', error);
     } finally {
       setLoading(false);
+      return true;
     }
   };
 
@@ -117,27 +119,30 @@ export default function ChildPage() {
     fetchContent(); // Cargar contenido inicial (raíz)
   }, [parent, child]);
 
-  if (loading) return <LoadingContent />;
+  if (loading) return <div className=" h-100" style={{display:'flex',justifyContent:'center'}}>
+    <LoadingContent />
+    </div>
 
   return (
     <div className="entry-content">
       {content ? (
         <>
           {navigationStack.length > 0 && (
-            <div className="path" style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+            <>
+            <div className="pathd" style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
               <a href="#!" style={{color:"#003670"}} onClick={() => {
             setNavigationStack([]);  // Reiniciar la pila de navegación
             fetchContent(null);      // Volver a cargar el contenido inicial
           }}>{content.title.rendered.toUpperCase()}</a>
               {navigationStack.map((folder, index) => (
                 <span key={folder.id}>
-                &nbsp;/&nbsp;
+                &nbsp;{` > `}&nbsp;
                   <a style={{color:"#003670"}} href="#!" onClick={() => handleJumpToFolder(index)}>
                     { folder.name.toUpperCase() }
                   </a>
                 
                 </span>
-                
+               
               ))}
               {/* Botón de Atrás */}
              
@@ -146,17 +151,22 @@ export default function ChildPage() {
                 onClick={handleBackClick}>
                 <i class="ri-arrow-left-s-line"></i> Atrás
               </button>
+            
             </div>
+              <hr/>
+              </>
           )}
-          
+         
           {/* Mostrar el nombre de la carpeta actual */}
           <h1 className="entry-title">{currentFolder ? currentFolder.name : content.title.rendered}</h1>
-
+          {content.content.rendered && navigationStack.length < 1 ? (
+          <div className='wordpress-content' style={{padding: '0px 0px 2rem 0'}} dangerouslySetInnerHTML={{ __html: content.content.rendered }} />
+        ):null}
           {/* Mostrar carpetas y archivos */}
           <FolderList subfolders={subfolders} files={files} onFolderClick={handleFolderClick} />
         </>
       ) : (
-        <p>No se encontró contenido para {decodeURIComponent(child || parent)}</p>
+        <p>No se encontró contenido para {getOriginalTitle(child || parent)}</p>
       )}
     </div>
   );

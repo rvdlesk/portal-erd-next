@@ -1,13 +1,16 @@
 'use client';
-import React from 'react';
+import React, {useState} from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import useMenuStore from '../store/menuStore';
 
+
+
 const ListMenu = () => {
   const { menuItems } = useMenuStore(); // Ya no es necesario el fetch, solo usamos los datos del store
   const pathname = usePathname();
-
+  const [menuControl, setMenuControl ] = useState('block')
+ 
   const isActivePath = (parent, child = '') => {
     const encodedParent = encodeURIComponent(parent);
     const encodedChild = encodeURIComponent(child);
@@ -23,9 +26,12 @@ const ListMenu = () => {
           const childIsActive = item.children?.some((child) =>
             isActivePath(item.sanitizedTitle, child.sanitizedTitle)
           );
+          const parentActive = isActivePath(item.sanitizedTitle);
 
+
+          
           return (
-            <li key={index}>
+            <li key={index}  >
               {item.children.length > 0 ? (
                 <>
                   <a
@@ -43,7 +49,7 @@ const ListMenu = () => {
                       {item.children.map((child, childIndex) => {
                         const childActive = isActivePath(item.sanitizedTitle, child.sanitizedTitle);
                         return (
-                          <li key={childIndex}>
+                          <li key={childIndex} className={`${ childActive ? 'active' : ''}`} >
                             <Link
                               href={`/transparencia/${item.sanitizedTitle}/${child.sanitizedTitle}`}
                               className={childActive ? 'active' : ''}
@@ -72,10 +78,20 @@ const ListMenu = () => {
   };
 
   return (
-    <div className="group-submenu second" style={{ paddingRight: '10px' }}>
+    <>
+    <div className="group-submenu" style={{ paddingRight: '10px' }}>
+    <ul className>
+      <li onClick={ () => setMenuControl(menuControl === 'block' ? 'none' : 'block')}
+       className={pathname.split("/").length  < 3 ?'active': '' }>
+        <a  aria-controls={menuControl === 'block' ? 'true' : 'false'}  aria-expanded={menuControl === 'block' ? 'true' : 'false'}   href="#!" data-bs-toggle="collapse">Transparencia <i className="ri-arrow-down-s-line"></i></a>
+      </li>
+    </ul>
+  </div>
+    <div className="group-submenu second" style={{ paddingRight: '10px', display:menuControl }}>
       <div className="group-submenu-title">Generales</div>
       {renderMenuItems(menuItems)}
     </div>
+    </>
   );
 };
 

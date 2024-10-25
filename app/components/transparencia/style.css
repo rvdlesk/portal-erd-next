@@ -6,6 +6,22 @@
     list-style-type: none;
     padding: 0;
   }
+
+  .breadcrumbs{
+    background-color:#1e8338;
+    width: 100%;
+    background-image: url('../../../public/img/fondo1.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+    background-position: center 0; /* Ajusta la posición de la imagen verticalmente */
+    height: 178px; /* Asegúrate de que esta altura corresponda a la altura de tu header */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+
+ .breadcrumbs h1, .path span,.path a {
+    color:#FFFFFF !important;
+  }
   
   .breadcrumbs ul {
     list-style-type: none;

@@ -7,6 +7,7 @@ import useMenuStore from '../store/menuStore'; // Import Zustand store
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './style.css';
+import './wordpress.css'
 import LoadingContent from '../components/Loading';
 
 export default function TransparenciaLayout({ children }) {
@@ -45,9 +46,8 @@ export default function TransparenciaLayout({ children }) {
   };
 
   if(menuItems.length < 1){
-    return <div style={{height: "400px", paddingTop:"6rem"}}>
-   <LoadingContent/>
-</div>
+    return  <div className="h-100" style={{display:'flex',justifyContent:'center', minHeight:"50vh"}}>
+    <LoadingContent/></div>
   }
 
   return (
@@ -56,10 +56,10 @@ export default function TransparenciaLayout({ children }) {
         <div className="container">
           <div className="breadcrumbs-cont">
             <div className="path">
-              <Link href="/">INICIO</Link> / 
+              <Link href="/">INICIO</Link>  <span>{` > `}</span>
               <Link href="/transparencia"> TRANSPARENCIA</Link>
               {pathParts.slice(1).map((part, index) => (
-                <span key={index}> / {getOriginalTitle(decodeURIComponent(part)).toUpperCase()}</span>
+                <span key={index}> {` > `} {getOriginalTitle(decodeURIComponent(part)).toUpperCase()}</span>
               ))}
             </div>
           </div>
@@ -77,13 +77,7 @@ export default function TransparenciaLayout({ children }) {
         <div className="row">
           <div className="col-md-3">
             <div className="list-submenu">
-              <div className="group-submenu">
-                <ul className="">
-                  <li className="active">
-                    <a>Transparencia <i className="ri-arrow-down-s-line"></i></a>
-                  </li>
-                </ul>
-              </div>
+             
               {isMenuLoaded ? <ListMenu /> : <LoadingContent/>} {/* Mostrar el ListMenu solo si los datos están listos */}
             </div>
           </div>

@@ -4,7 +4,7 @@ import './style.css'
 
 const FolderList = ({ subfolders, files, onFolderClick }) => {
   return (
-    <div>
+    <div >
       {/* Renderizar subcarpetas */}
       {subfolders.length > 0 && (
         <div className="subfolders">
@@ -27,7 +27,6 @@ const FolderList = ({ subfolders, files, onFolderClick }) => {
       {/* Renderizar archivos que están en la carpeta actual */}
       {files.length > 0 && (
         <div className="files" style={{ marginTop: '20px' }}>
-          <h2>Archivos</h2>
           <ul>
             {files.map((file) => (
               <li key={file.attachment_id}>

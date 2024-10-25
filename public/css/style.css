@@ -126,15 +126,30 @@ a.card-link{
 .breadcrumbs{
     padding: 50px 0;
 }
+.breadcrumbs{
+    background-color:#1e8338;
+    width: 100%;
+    background-image: url('../img/fondo1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+    background-position: 30% 50%; /* Ajusta la posición de la imagen verticalmente */
+    height: 178px; /* Asegúrate de que esta altura corresponda a la altura de tu header */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
 
+ .breadcrumbs h1, .path span,.path a {
+    color:#FFFFFF !important;
+  }
+  
 .breadcrumbs h1{
     font-weight: 500;
     margin-top: 10px;
 }
 
-.breadcrumbs .path a {
+/* .breadcrumbs .path a {
     color: #003670;
-}
+} */
 
 
 div.certifications{
