@@ -6,3 +6,43 @@
 .list-submenu .group-submenu ul li a[data-bs-toggle|="collapse"], .list-submenu .group-submenu ul li a {
     line-height: 1.2rem !important;
 }
+
+
+.active-sp{
+    border-right: 3px solid #021e3d;
+  
+    
+}
+
+.active-sp a{
+    color:#ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold;
+    padding-right: 1rem;
+    
+}
+
+.active-sp .ri-arrow-down-s-line:before{
+    color: #ffffff;
+    
+   
+}
+
+.list-submenu .group-submenu ul li.active-sp:after {
+    background-color:#003670 ;
+
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200%;
+}
+
+
+@media screen and (max-width: 767px) {
+    .list-submenu .group-submenu ul li.active-sp:after {
+        width: 100%;
+    }
+}

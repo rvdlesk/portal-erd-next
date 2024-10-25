@@ -17,6 +17,12 @@ const ListMenu = () => {
     return pathname.includes(`/${encodedParent}/${encodedChild}`);
   };
 
+  const isActiveParent = (urlName) => {
+      const pathParts = pathname.split("/");
+      console.log(pathParts[2])
+      return  pathParts[2] == urlName;
+  }
+
   const renderMenuItems = (items) => {
     return (
       <ul>
@@ -26,12 +32,12 @@ const ListMenu = () => {
           const childIsActive = item.children?.some((child) =>
             isActivePath(item.sanitizedTitle, child.sanitizedTitle)
           );
-          const parentActive = isActivePath(item.sanitizedTitle);
+          
 
 
           
           return (
-            <li key={index}  >
+            <li key={index}   className={item.children.length < 1 && isActiveParent(item.sanitizedTitle)  ? 'active' : ''} >
               {item.children.length > 0 ? (
                 <>
                   <a
@@ -82,10 +88,21 @@ const ListMenu = () => {
     <div className="group-submenu" style={{ paddingRight: '10px' }}>
     <ul className>
       <li onClick={ () => setMenuControl(menuControl === 'block' ? 'none' : 'block')}
-       className={pathname.split("/").length  < 3 ?'active': '' }>
-        <a  aria-controls={menuControl === 'block' ? 'true' : 'false'}  aria-expanded={menuControl === 'block' ? 'true' : 'false'}   href="#!" data-bs-toggle="collapse">Transparencia <i className="ri-arrow-down-s-line"></i></a>
+      className='active-sp'
+      >
+        <a  aria-controls={menuControl === 'block' ? 'true' : 'false'}
+          aria-expanded={menuControl === 'block' ? 'true' : 'false'}
+              data-bs-toggle="collapse">Más de esta sección
+               <i className="ri-arrow-down-s-line"></i></a>
       </li>
+      
     </ul>
+  </div>
+  <div className="group-submenu second" style={{ display:menuControl }}>
+<ul>
+<li  className={pathname.split("/").length  < 3 ?'active': '' }><a href="/transparencia">Inicio</a></li>
+<li><a href="/">Portal institucional ERD</a></li>
+</ul>
   </div>
     <div className="group-submenu second" style={{ paddingRight: '10px', display:menuControl }}>
       <div className="group-submenu-title">Generales</div>

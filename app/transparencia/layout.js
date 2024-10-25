@@ -46,7 +46,7 @@ export default function TransparenciaLayout({ children }) {
   };
 
   if(menuItems.length < 1){
-    return  <div className="h-100" style={{display:'flex',justifyContent:'center', minHeight:"50vh"}}>
+    return  <div  style={{display:'flex',justifyContent:'center', height:"100vh"}}>
     <LoadingContent/></div>
   }
 
@@ -73,7 +73,7 @@ export default function TransparenciaLayout({ children }) {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container" style={{height:"100vh"}}>
         <div className="row">
           <div className="col-md-3">
             <div className="list-submenu">

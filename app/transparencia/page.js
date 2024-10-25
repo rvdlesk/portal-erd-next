@@ -2,7 +2,7 @@
 
 export default function TransparenciaPage() {
   return (
-    <div className="col-md-9">
+    <div className="col-md-9" >
        <div className="entry-content">
        <h1 className="entry-title">Bienvenido a la Sección de Transparencia</h1>
       <p>

@@ -27,7 +27,7 @@ export default function ParentPage() {
       );
       const data = await response.json();
       console.log('API Data received:', data);
-
+      setLoading(true);
       if (data.length > 0) {
         const folderData = data[0];
         setContent(folderData);

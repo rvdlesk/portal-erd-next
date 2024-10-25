@@ -15,8 +15,9 @@
     background-repeat: no-repeat;
     background-attachment: fixed; /* Parallax effect */
     background-position: center 0; /* Ajusta la posición de la imagen verticalmente */
-    height: 178px; /* Asegúrate de que esta altura corresponda a la altura de tu header */
+    height: 240px; /* Asegúrate de que esta altura corresponda a la altura de tu header */
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    padding-top: 7rem;
   }
 
  .breadcrumbs h1, .path span,.path a {
