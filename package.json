@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@ogticrd/ui-kit": "^0.10.0",
     "@react-pdf/renderer": "^4.0.0",
     "animate.css": "^4.1.1",
+    "emailjs-com": "^3.2.0",
     "embedrax": "^1.2.0",
     "next": "14.2.15",
     "pdfjs-dist": "^4.7.76",

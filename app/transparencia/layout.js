@@ -9,6 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import './style.css';
 import './wordpress.css'
 import LoadingContent from '../components/Loading';
+import ContactButtons from '@/app/components/ContactButtons'
 
 export default function TransparenciaLayout({ children }) {
   const pathname = usePathname();
@@ -72,7 +73,11 @@ export default function TransparenciaLayout({ children }) {
           )}
         </div>
       </div>
-
+      <div className="container">
+      <div className='row pt-4 pl-4'>
+      <ContactButtons />
+      </div>
+      </div>
       <div className="container" style={{height:"100vh"}}>
         <div className="row">
           <div className="col-md-3">
