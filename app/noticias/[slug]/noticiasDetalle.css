@@ -1,0 +1,11 @@
+/* noticiasDetalle.css */
+.related-news {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .related-news-item {
+    width: 30%;
+    text-align: center;
+  }
+  

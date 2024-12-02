@@ -874,3 +874,16 @@ p.subtitle{
   }
   
 
+/* Estilos de impresión para forzar la versión de escritorio */
+@media print {
+    /* Fija el ancho de la página para que simule la vista de escritorio */
+    body {
+      width: 1024px; /* Ancho típico de escritorio */
+      zoom: 80%; /* Ajusta el zoom si es necesario */
+    }
+  
+    /* Sobrescribe estilos de móvil/tablet */
+    @media (max-width: 768px) {
+      /* Si tienes estilos específicos para móvil, puedes anularlos aquí */
+    }
+  }

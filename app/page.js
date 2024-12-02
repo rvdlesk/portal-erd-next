@@ -143,7 +143,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid">
+      {/* <div className="container-fluid">
         <div className="row custom-section">
           <div className="col-md-6 custom-left-box d-flex flex-column justify-content-center align-items-start">
             <h6>VISITA</h6>
@@ -177,7 +177,7 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div
         className="container-fluid"
         style={{

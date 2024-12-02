@@ -1,0 +1,188 @@
+/* Estilos para el menú principal */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  /* gap: 20px; */
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item-space {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Coloca el título a la izquierda y el icono a la derecha */
+  width: 100%; /* Asegúrate de que el enlace ocupe todo el espacio disponible */
+  text-decoration: none;
+}
+
+.menu-title {
+  flex: 1; /* Permite que el título ocupe el espacio restante */
+}
+
+.arrow-right {
+  margin-left: 10px; /* Separación entre el texto y el icono */
+  align-self: center; /* Alineación vertical del icono */
+}
+
+
+.menu-element > a {
+  text-decoration: none;
+  padding: 10px;
+  color: inherit;
+  /* display: inline-block; */
+  border-radius: 6px; /* Bordes redondeados para el elemento principal */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación */
+}
+
+.mega-menu-column ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px; /* Más padding para los elementos del submenú */
+  /* display: block; */
+  border-radius: 6px; /* Bordes redondeados para los elementos del submenú */
+}
+
+
+/* Flechas para indicar submenús */
+.arrow-down {
+  margin-left: 5px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+}
+
+.arrow-right {
+  margin-left: 5px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+/* Mega menú principal */
+.mega-menu {
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: #FFFFFF;
+  /* padding: 10px 0; */
+  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
+  z-index: 1000;
+  display: flex;
+  gap: 20px;
+  border-bottom-left-radius: 8px; /* Bordes redondeados */
+  border-bottom-right-radius: 8px;
+}
+.mega-menu li{
+  padding: 10px 5px;
+  border-bottom-left-radius: 8px; /* Bordes redondeados */
+  border-bottom-right-radius: 8px;
+}
+.mega-menu li:hover {
+  background-color: #EEF5FF; /* Color de fondo en hover */
+  transform: translateY(-2px); /* Suave movimiento en hover */
+  border-radius: 8px;
+}
+
+.mega-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+
+/* Columnas en el mega menú */
+.mega-menu-column {
+  flex: 1;
+  /* padding-right: 10px; */
+}
+
+.mega-menu-column h3 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.mega-menu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-menu-column ul li {
+  
+  position: relative;
+  /* padding: 5px 0; */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación para los elementos del submenú */
+}
+
+
+/* Submenús de segundo y tercer nivel */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: white;
+  padding: 10px;
+  width: 240px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-radius: 8px; /* Bordes redondeados para el submenú */
+  visibility: hidden;
+  transform: translateX(6px); /* Pequeño desplazamiento inicial */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.has-submenu:hover > .submenu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Aplicación de animación para submenús */
+  visibility: visible;
+  transform: translateX(0); /* Restablecer desplazamiento al mostrar */
+}
+
+.has-submenu:hover > .submenu li:hover {
+  background-color: #EEF5FF; /* Color de fondo en hover */
+  transform: translateY(-2px); /* Suave movimiento en hover */
+}
+
+.submenu li a {
+  padding: 10px 15px; /* Padding adicional para submenús */
+  color: #333;
+  border-radius: 6px; /* Bordes redondeados */
+}
+
+/* Responsividad: mega menú en formato vertical en pantallas pequeñas */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mega-menu {
+    flex-direction: column;
+    min-width: 100%;
+    padding: 10px;
+  }
+
+  .menu-element > a {
+    width: 100%;
+  }
+
+  .mega-menu-column {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+

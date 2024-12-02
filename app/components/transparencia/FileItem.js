@@ -38,7 +38,6 @@ const getFileIconAndColor = (fileName) => {
   }
   
   const extension = fileName.split('.').pop().toLowerCase();
-  console.log(extension)
   switch (extension) {
     case 'pdf':
       return { icon: 'ri-file-pdf-2-fill', color: '#d9534f' }; // Rojo para PDF

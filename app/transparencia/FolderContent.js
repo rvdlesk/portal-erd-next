@@ -20,7 +20,6 @@ export default function FolderContent() {
   const fetchContent = async (folderId = null) => {
     setLoading(true);
     let searchQuery = child ? getOriginalTitle(child) : getOriginalTitle(parent);
-    console.log('Fetching data with query:', searchQuery);
 
     try {
       const response = await fetch(

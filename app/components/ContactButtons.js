@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import emailjs from '@emailjs/browser';
+import { usePathname } from 'next/navigation';
 
 const ContactButtons = () => {
-    console.log("EmailJS Public Key:", process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-
+    const pathname = usePathname();
+ 
     useEffect(() => emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY), []);
 
   const [open, setOpen] = useState(false);
@@ -17,12 +18,16 @@ const ContactButtons = () => {
     message: ''
   });
 
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`
+
   const handlePrint = () => {
-    window.print();
+    setTimeout(() => {
+        window.print();
+      }, 100);
   };
 
   const handleWhatsApp = () => {
-    const text = "Hello! I'm reaching out to you via WhatsApp.";
+    const text = url;
     window.open(`whatsapp://send?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -43,6 +48,7 @@ const ContactButtons = () => {
   };
 
   const handleSendEmail = async () => {
+    formData.message = url
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
@@ -55,12 +61,17 @@ const ContactButtons = () => {
             publicKey:  '2vN1xaxI_wwSHYVE1',
           },
       );
-      alert("Email sent successfully!");
+      alert("Correo enviado!");
     } catch (error) {
       console.error("Failed to send email", error);
-      alert("Failed to send email. Please try again.");
+      alert("Error al enviar el correo. Por favor, inténtalo de nuevo.");
     }
     handleCloseDialog();
+    setFormData({
+        recipient: '',
+        senderName: '',
+        senderEmail: '',
+    })
   };
 
   return (
@@ -77,12 +88,12 @@ const ContactButtons = () => {
 
       {/* Dialog for Email Form */}
       <Dialog open={open} onClose={handleCloseDialog}>
-        <DialogTitle>Send Email</DialogTitle>
+        <DialogTitle>Compartir vía Correo</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            label="Recipient Email"
+            label="Correo Destino"
             type="email"
             fullWidth
             name="recipient"
@@ -91,7 +102,7 @@ const ContactButtons = () => {
           />
           <TextField
             margin="dense"
-            label="Your Name"
+            label="Tu Nombre"
             type="text"
             fullWidth
             name="senderName"
@@ -100,7 +111,7 @@ const ContactButtons = () => {
           />
           <TextField
             margin="dense"
-            label="Your Email"
+            label="Tu Correo"
             type="email"
             fullWidth
             name="senderEmail"
@@ -111,17 +122,18 @@ const ContactButtons = () => {
             margin="dense"
             label="Message"
             type="text"
+            disabled
             multiline
             rows={4}
             fullWidth
             name="message"
-            value={formData.message}
+            value={`Esta información podría ser interesante para ti: ${url}`}
             onChange={handleChange}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={handleSendEmail} color="primary">Send</Button>
+          <Button onClick={handleCloseDialog}>Cancelar</Button>
+          <Button onClick={handleSendEmail} color="primary">Enviar</Button>
         </DialogActions>
       </Dialog>
     </div>

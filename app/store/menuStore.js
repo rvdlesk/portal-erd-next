@@ -1,27 +1,22 @@
 // app/store/menuStore.js
 import { create } from 'zustand';
-
+import {sanitizeTitle} from '@/app/utils/menuUtils'
 // Función para sanitizar el título
-const sanitizeTitle = (title) => {
-  const accentMap = {
-    'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
-    'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U',
-    'ñ': 'n', 'Ñ': 'N',
-  };
 
-  return title
-    .split('')
-    .map(char => accentMap[char] || char) // Reemplaza acentos
-    .join('')
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Remover diacríticos
-    .replace(/\s+/g, '-') // Reemplazar espacios con guiones
-    .toLowerCase(); // Convertir a minúsculas
-};
+
+// Recursive function to sanitize menu items with children
+const sanitizeMenuItems = (items) =>
+  items.map((item) => ({
+    ...item,
+    sanitizedTitle: sanitizeTitle(item.title),
+    children: item.children ? sanitizeMenuItems(item.children) : [],
+  }));
 
 // Zustand Store
 const useMenuStore = create((set) => ({
   menuItems: [],
+  menuPortalItems: [],
+  loading: false,
   fetchMenu: async () => {
     try {
       const response = await fetch('https://apird.mantosoft.com/wp-json/custom-api/v1/menu-transparencia');
@@ -42,6 +37,23 @@ const useMenuStore = create((set) => ({
       console.error('Error fetching menu items:', error);
     }
   },
+  fetchMenuPortal: async () => {
+    set({ loading: true }); // Start loading
+    try {
+      const response = await fetch('https://apird.mantosoft.com/wp-json/custom-api/v1/menu-portal');
+      const data = await response.json();
+
+      // Sanitize menu items with nested children
+      const sanitizedData = sanitizeMenuItems(data);
+      
+      set({ menuPortalItems: sanitizedData });
+    } catch (error) {
+      console.error('Error fetching menu portal items:', error);
+    } finally {
+      set({ loading: false }); // End loading
+    }
+  },
+  
 }));
 
 export default useMenuStore;
